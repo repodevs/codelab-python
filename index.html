@@ -1,0 +1,1300 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#4F00C9">
+    <meta charset="UTF-8">
+    <title>Python Basic - Codelab</title>
+    <script src="webcomponents-lite.min.js"></script>
+    <link rel="import" href="codelab.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+    <style is="custom-style">
+        body {
+            font-family: "Roboto", sans-serif;
+            background: var(--google-codelab-header-background, --paper-blue-600);
+        }
+    </style>
+
+</head>
+
+<body unresolved class="fullbleed">
+
+    <google-codelab title="Python Basic - Codelab" environment="web" feedback-link="https://github.com/repodevs/codelab-python-basic/issues" last-updated="2017-12-31">
+
+        <google-codelab-step label="Overview" duration="3">
+            <p>
+                <img style="max-width: 401.00px" src="img/python-logo.png"><span>  </span>
+            </p>
+            <p>Pada Code lab ini kita akan belajar mengenai basic python programming</p>
+            <h3>Apa yang akan kita pelajari?</h3>
+            <ul>
+                <li>Apa itu Python dan kenapa menggunakan Python.</li>
+                <li>Pengenalan Syntax pada python.</li>
+                <li>Variabel dan Tipe Data</li>
+                <li>Indexing dan Slicing</li>
+                <li>Operator</li>
+                <li>Control Flow</li>
+                <li>Tuple, List, Dict</li>
+                <li>Function</li>
+                <li>args & kwargs</li>
+                <li>Class</li>
+                <li>Debuging</li>
+                <li>Testing (basic)</li>
+            </ul>
+            <h3>Apa saja alat-alat yang diperlukan?</h3>
+            <ul>
+                <li>Operating System yang telah terinstall Python</li>
+                <li>Text Editor (VIM, VSCode, Sublime Text, etc)</li>
+                <li>IDE (PyCharm) (optional)</li>
+            </ul>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Tentang Python" duration="5">
+
+            <h2>Apa Itu Python?</h2>
+            <p>Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.</p>
+
+            <p>Python dibuat oleh <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum" target="_blank">Guido Van Rossum</a>, edisi pertama python dirilis pada tahun 1990 (v.0.1.0) </p>
+
+            <p>Berikut daftar rilis python</p>
+
+            <img style="align:center;max-width: 600px;" src="img/rilis_python.png">
+
+            <p><hr/><br/></p>
+
+            <p>Python digunakan untuk membuat berbagai macam program, seperti: Web App, Scientific, GUI (Desktop) App, Mobile App, IoT, Game, etc</p>
+
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Kenapa Menggunakan Python" duration="2">
+ 
+            <h2>Kenapa menggunakan Python?</h2>
+            <ul>
+                <li>Mudah di pelajari</li>
+                <li>cepat dan efektif (syntax yang rapi dan mudah di baca)</li>
+                <li>Memiliki library yang sangat banyak.</li>
+                <li>Dipercaya beberapa perusahan besar seperti Google, YouTube, Dropbox, Yahoo, etc.</li>
+                <li>Dapat dijalankan di Linux, Mac, Windows bahkan perangkat mobile </li>
+                <li>Gratis !!!</li>
+                <li>Coba dan rasakan sendiri manfaatnya :)</li>
+            </ul>
+        </google-codelab-step>
+
+        <google-codelab-step label="Python 2 vs Python 3" duration="2">
+
+            <h2>Python 2 vs Python 3</h2>
+            <p>
+                Ada 2 versi python yang saat ini masih aktif di kembangkan, yaitu python 2 dan python 3.
+            </p>
+
+            <h2>Apa Perbedaannya?</h2>
+            <p>
+                Python versi 2 merupakan versi yang banyak digunakan saat ini, baik dilingkungan produksi dan pengembangan. <br>
+                Python 2 akan disupport sampai tahun 2020, setelah itu hanya python 3 yang akan di support.
+            </p>
+            <p>
+                Sementara Python versi 3 adalah pengembangan lanjutan dari versi 2. <br>
+                Python 3 memiliki lebih banyak fitur dan improvment dibandingkan Python 2. <br>
+            </p>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Menjalankan Python" duration="2">
+
+            <h2>Menjalankan Python</h2>
+            <p>
+                Didalam python, kita bisa menjalakan python dengan 2 mode, yaitu mode interactive shell dan mode execute file python
+            </p>
+
+            <h2>Mode Interactive Shell</h2>
+            <p>
+                Contoh Penggunaan dengan mode interactive, buka terminal dan ketikan command <b>python</b>
+            </p>
+            <p>
+                <pre><code>
+me@RevsTech:~/CODER/codelabs/python-basic$ python
+Python 2.7.12 (default, Nov 19 2016, 06:48:10) 
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print "Hello World!"
+Hello World!
+>>>            </code></pre>
+            </p>
+
+            <aside class="special">
+                <p><strong>Note</strong>: Ketika berada di dalam mode interactive, Ada dua fungsi yang bisa digunakan untuk mencari bantuan</p>
+                <ul>
+                  <li>fungsi <code>dir()</code> untuk melihat fungsi apa saja yang tersedia pada sebuah modul.</li>
+                  <li>fungsi <code>help()</code> untuk membuka dokumentasi suatu fungsi.</li>
+                </ul>
+            </aside>
+            <p>
+<pre><code>
+>>> import math
+>>> dir(math)
+['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+>>> help(math.pow)  
+
+----
+Help on built-in function pow in module math:
+
+pow(...)
+    pow(x, y)
+    
+    Return x**y (x to the power of y).
+</code></pre>
+            </p>
+
+            <h2>Mode Execute File</h2>
+            <p>
+                Contoh Penggunaan mode execute file <br>
+                Buat file baru bernama <b>hello.py</b> kemudian edit file tersebut menjadi seperti berikut:
+            </p>
+<pre><code> 
+me@RevsTech:~/CODER/codelabs/python-basic$ touch hello.py
+me@RevsTech:~/CODER/codelabs/python-basic$ vim hello.py
+# file hello.py
+print "Hello World!"
+</code></pre>
+            <p>
+              Kemudian setelah itu jalankan file tersebut
+            </p>
+            <p>
+<pre><code>
+me@RevsTech:~/CODER/codelabs/python-basic$ python hello.py
+Hello World!
+</code></pre>
+            </p>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Pengenalan Syntax" duration="2">
+        <p>
+          Setalah kita selesai installasi segala keperluan dan mencoba menjalankan python, mari kita ketahui penulisan syntax-syntax dasar pada python.
+        </p>
+
+        <h2>1. Penulisan Statement</h2>
+        <p>Statement adalah sebuah instruksi atau kalimat perintah yang akan dieksekusi oleh komputer.</p>
+<pre><code>
+print("Hello World!")
+print("Python Basic Codelab")
+name = "Edi Santoso"
+</code></pre>
+
+<aside class="special">
+  <strong>Note</strong>:
+  Pada python ketika menulisakan statement dalam satu baris tidak perlu menggunakan titik koma (<code>;</code>) <br>
+  Tetapi Jika kita ingin menuliskan lebih dari 1 statement dalam satu baris kita perlu menggunakan titik koma (<code>;</code>)
+</aside>
+
+<pre><code>
+print("Hello"); print("World!"); print("Learning Python Basic")
+first_name = "Edi"; last_name = "Santoso"
+</code></pre>
+
+<aside class="warning">
+<strong>Note</strong>: Penulisan statement seperti ini tidak disarankan, karena akan sulit untuk di baca.
+</aside>
+        <hr>
+
+        <h2>2. Penulisan String</h2>
+        <p>Didalam python penulisan string bisa menggunakan 4 cara, yaitu menggunakan:
+          <ul>
+            <li>tanda petik satu (<code>'</code>)</li>
+            <li>tanda petik dua (<code>"</code>)</li>
+            <li>triple tanda petik satu (<code>'''</code>)</li>
+            <li>triple tanda petik dua (<code>"""</code>)</li>
+          </ul>
+        </p>
+
+<pre><code>
+book_name = 'Learn Python Basic' # menggunakan tanda petik satu
+author = "John Doe" # menggunakan tanda petik dua
+isbn = '''ABC123''' # menggunakan triple tanda petik satu
+note = """This Is Notes""" # menggunakan triple tanda petik dua
+</code></pre>
+        <hr>
+
+        <h2>3. Penulisan Komentar</h2>
+        <p>Ada beberapa cara penulisan komentar pada python, yaitu menggunakan:
+          <ul>
+            <li>tanda petik satu (<code>'</code>)</li>
+            <li>tanda petik dua (<code>"</code>)</li>
+            <li>triple tanda petik satu (<code>'''</code>)</li>
+            <li>triple tanda petik dua (<code>"""</code>)</li>
+            <li>tanda pagar (<code>#</code>)</li>
+          </ul>
+        </p>
+
+<pre><code>
+'Ini Komentar'
+
+"Ini Komentar"
+
+'''Ini Komentar
+Bisa dengan menambahkan baris'''
+
+"""Ini Komentar
+Bisa dengan menambahkan baris"""
+
+# Ini Komentar
+</code></pre>
+
+<aside class="special">
+<strong>Note</strong>: Penulisan komentar menggunakan triple petik dua adalah yang lebih dasarankan untuk digunakan.
+</aside>
+
+<pre><code>
+class PersegiPanjang:
+  """Kelas Persegi Panjang
+  Digunakan untuk menentukan persegi panjang
+  """
+  def __init__(self, panjang, lebar):
+    self.panjang = panjang
+    self.lebar = lebar
+
+
+# Melihat dokumentasi class
+print PersegiPanjang.__doc__
+raw_input('\ntekan [enter] untuk melihat bantuan (dokumentasi) class: ')
+help(PersegiPanjang) # Untuk melihat dokumentasi dari class
+</code></pre>
+        <hr>
+
+        <h2>4. Penulisan Blok</h2>
+        <p>Penulisan blok pada python harus menambahkan indentasi, indentasi bisa menggunakan <code>tab</code>, <code>spasi</code>, (<code>2x/4x</code>)</p>
+
+Contoh penulisan blok yang benar
+<pre><code>
+# blok if
+if age > 25:
+    print(age)
+    print("Welcome")
+
+# blok for
+for i in range(10):
+    print i
+</code></pre>
+
+Contoh Penulisan blok yang salah
+<pre><code>
+# blok if
+if age > 25:
+print(age)
+print("Welcome")
+
+# blok for
+for i in range(10):
+print i
+</code></pre>
+<hr>
+
+        <h2>5. Penulisan Style Case</h2>
+        <p>Syntax Python bersifat <code>case sensitive</code>, artinya <code>variableIni</code> dengan <code>Variableini</code> berbeda.</p>
+        <p>dalam penulisan style ada beberapa cara yang direkomendasikan</p>
+
+<pre><code>
+# Snake Case digunakan pada:
+module_name, package_name, function_name, global_var_name, etc.
+
+def func_hitung(num):
+  pass
+
+
+# CamelCase digunakan pada:
+ClassName, ExceptionName
+
+class BookLibrary:
+  pass
+
+
+# ALL CAPS digunakan pada:
+GLOBAL_CONSTANT_NAME
+
+DEFAULT_NAME = ['john', 'doe']
+</code></pre>
+
+<aside class="special">
+<p>Untuk style guide lainnya bisa dilihat di:</p>
+
+<ul>
+  <li><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8 – Style Guide for Python Code</a></li>
+  <li><a href="https://google.github.io/styleguide/pyguide.html" target="_blank">Python Style Guide Google</a></li>
+</ul>
+</aside>
+<hr>
+
+        <h2>6. Menggunakan Package (importing)</h2>
+        <p>Sepertihalnya di dalam bahasa pemrograman lainnya, python juga menyedikan function untuk importing package</p>
+
+<pre><code>
+# import semua package math
+import math
+from math import *
+
+# import hanya method pow dari package math
+from math import pow
+
+# import method dan gunakan alias untuk nama method
+from math import pow as pangkat
+
+# import module didalam folder yang sama
+from . import module
+</code></pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Variabel dan Tipe Data" duration="2">
+
+Variabel merupakan tempat menyimpan data, sedangkan tipe data adalah jenis data yang tersimpan dalam variabel.
+Variabel bersifat mutable, artinya nilainya bisa berubah-ubah.
+
+<h2>Membuat Variable</h2>
+
+<p>Variable di python bisa dibuat seperti berikut</p>
+
+<pre><code>
+variable_name = value
+
+name = "Edi"
+name2 = "Santoso"
+age = 19
+</code></pre>
+
+Untuk melihat value dari variable tersebut, kita bisa menggunakan function <code>print</code>
+
+<pre><code>
+print name
+print name2
+print age
+</code></pre>
+
+
+<aside class="special">
+<h2>Aturan Penulisan Variable</h2>
+  <ul>
+    <li>Nama variabel boleh diawali menggunakan huruf atau underscore (<code>_</code>), contoh: <code>name</code>, <code>_name</code>, <code>myName</code>, <code>My_variable</code>.
+    </li>
+    <li>Karakter selanjutnya dapat berupa huruf, underscore (<code>_</code>) atau angka, contoh: <code>__name</code>, <code>y2</code>, <code>name1</code>.
+    </li>
+    <li>Variabel bersifat <i>case sensitive</i>. My_variable dan my_Varial adalah hal yang berbeda.</li>
+    <li>Variabel tidak boleh menggunakan kata kunci yang sudah ada dalam python seperti <code>if</code>, <code>while</code>, <code>for</code>, <code>del</code>, selengkapanya bisa dilihat <a href="https://docs.python.org/2/reference/lexical_analysis.html#keywords" target="_blank">disini</a>.</li>
+  </ul>
+
+</aside>
+
+
+<h2>Menghapus Variabel</h2>
+
+<pre><code>
+>>> name = "Edi Santoso"
+>>> print name
+Edi Santoso
+>>> del name
+>>> print name
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'name' is not defined
+>>> 
+</code></pre>
+
+Kita akan menemui <code>NameError</code> itu artinya variable tersebut sudah tidak ada lagi.
+
+<hr>
+
+<h1>Tipe Data</h1>
+<h2>Jenis Tipe Data</h2>
+
+<p>Secara umum, tipe data pada python terdiri dari
+  <ul>
+    <li>Strings</li>
+    <li>Number</li>
+    <li>Boolean</li>
+  </ul>
+</p>
+
+<h2>Tipe Data Strings</h2>
+
+Penulisan string di dalam python menggunakan 4 cara yaitu:
+
+<pre><code>
+name = 'Edi Santoso'
+gender = "Male"
+addrees = """
+  Jl. Suka Jaya No 20, RT 05,
+  Kelurahan Bunga, Jakarta
+"""
+work_address = '''
+  Jl. Pasir Putih KM 6,
+  Kelurahan Bintang, Jakarta
+'''
+</code></pre>
+
+<h2>Tipe Data Number</h2>
+
+<aside class="special">
+<p>Tipe data Number terbagi menjadi dua yaitu:</p>
+<ul>
+  <li><code>int</code> (integer): bilangan bulat, contoh: <code>6</code>, <code>7</code>, <code>20</code>, etc</li>
+  <li><code>float</code> : bilangan pecahan, contoh: <code>1.3</code>, <code>1.5</code>, <code>33.23</code>, etc</li>
+</ul>
+</aside>
+
+Contoh:
+<pre><code>
+price = 15000 # int
+weight = 12.5 # float
+</code></pre>
+
+<h2>Tipe Data Boolean</h2>
+
+Tipe data boolean adalah tipe data yang hanya memiliki dua nilai yaitu <code>True</code> dan <code>False</code> atau <code>0</code> dan <code>1</code>
+
+<aside class="warning">
+<strong>Note</strong>: penulisan <code>True</code> dan <code>False</code> harus di awali dengan huruf kapital dan tanpa tanda petik.
+</aside>
+
+Contoh:
+<pre><code>
+active = True
+running = 1
+</code></pre>
+
+
+<h2>Konversi Tipe Data</h2>
+
+<p>Meskipun python telah otomatis mendeteksi jenis tipe data pada variabel, ada kalanya kita perlu merubah tipe data tersebut.</p>
+
+Contoh:
+
+<pre><code>
+>>> a = 19
+>>> b = 5
+>>> a / b
+3 # hasil akan 3 karena tipe data dari variable a dan b adalah integer
+</code></pre>
+
+<pre><code>
+>>> a = 19
+>>> b = 5
+>>> float(a) / float(b)
+3.8 # hasil 3.8 karena tipe data adalah float (decimal)
+</code></pre>
+
+Fungsi <code>float()</code> akan merubah nilai <code>a</code> menjadi <code>19.0</code> dan <code>b</code> menjadi <code>5.0</code>
+
+<aside class="special">
+<p>Fungsi-fungsi untuk mengubah tipe data:</p>
+<ul>
+    <li><code>int()</code> untuk mengubah menjadi integer;</li>
+    <li><code>long()</code> untuk mengubah menjadi integer panjang;</li>
+    <li><code>float()</code> untuk mengubah menjadi float;</li>
+    <li><code>bool()</code> untuk mengubah menjadi boolean;</li>
+    <li><code>chr()</code> untuk mengubah menjadi karakter;</li>
+    <li><code>str()</code> untuk mengubah menjadi string.</li>
+    <li><code>bin()</code> untuk mengubah menjadi bilangan Biner.</li>
+    <li><code>hex()</code> untuk mengubah menjadi bilangan Heksadesimal.</li>
+    <li><code>oct()</code> untuk mengubah menjadi bilangan okta.</li>
+</ul>
+</aside>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Indexing dan Slicing" duration="2">
+        <p>Didalam python setiap variable yang memiliki data strings bisa di cari/ambil index atau posisinya.</p>
+
+<aside class="special">
+<strong>Note</strong>: function dari index dan slicing ini yaitu <code>variable[start:stop:step]</code>
+</aside>
+
+Contoh:
+<pre><code>
+>>> s = "Hello World!"
+>>> s[0]  # Indexing pada posisi 0, ini adalah karakter pertama dari variable
+'H'
+>>> s[6]  # Indexing pada posisi 6, ini berarti karakter nomor 7 dari variable
+'W'
+>>> s[:4] # Slicing dengan panjang 4 karakter dari depan
+'Hell'
+>>> s[4:] # Slicing semua karakter setelah karakter ke 4 dari depan
+'o World!'
+>>> s[2:4]  # Slicing dari 4 karakter yang di mulai setelah karakter ke 2 dari variable
+'ll'
+>>> s[2:5]  # Slicing dari 5 karakter yang di mulai setelah karakter ke 2 dari variable
+'llo'
+>>> s[2:9:4]  # Slicing, start, stop, step setiap 4 karakter di mulai setelah karakter ke 2 dari variable
+'lW'
+</code></pre>
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Operator" duration="2">
+        <p>Didalam python setidaknya ada 5 jenis operator yang sering di temui, yaitu:</p>
+        <ul>
+          <li>Operator Aritmatika</li>
+          <li>Operator Penugasan</li>
+          <li>Operator Pembanding</li>
+          <li>Operator Logika</li>
+          <li>Operator Ternary</li>
+        </ul>
+
+        <hr>
+
+        <h2>1. Operator Aritmatika</h2>
+        <p>Operator aritmatika ini adalah operator yang seringkali digunakan</p>
+        <p>Operator aritmatika terdiri dari:</p>
+
+<pre><code>
+________________________________
+Operator              Simbol
+--------------------------------
+Penjumlahan           +
+Pengurangan           -
+Perkalian             *
+Pembagian             /
+Sisa Bagi             %
+Pemangkatan           **
+________________________________
+</code></pre>
+
+Contoh Penggunaan
+<pre><code>
+>>> a = 5
+>>> b = 3
+>>> a + b
+8
+>>> a - b
+2
+>>> a * b
+15
+>>> a / b
+1
+>>> a % b
+2
+>>> a ** b
+125
+>>> 
+</code></pre>
+
+<hr>
+
+
+      <h2>2. Operator Penugasan</h2>
+      <p>Seperti namanya, operator ini digunakan untuk memberikan tugas pada variabel.</p>
+
+<pre><code>
+________________________
+Operator        Simbol
+------------------------
+Pengisian         =
+Penjumlahan       +=
+Pengurangan       -=
+Perkalian         *=
+Pembagian         /=
+Sisa Bagi         %=
+Pemangkatan       **=
+________________________
+</code></pre>
+
+
+Contoh
+<pre><code>
+# Pengisian
+a = 5
+
+# Penjumlahan
+a += 3  # ini sama halnya dengan  a = a + 3
+
+# Pengurangan
+a -= 2  # ini sama halnya dengan  a = a - 2
+
+# Perkalian
+a *= 10  # ini sama halnya dengan  a = a * 10
+
+# Pembagian
+a /= 5  # ini sama halnya dengan  a = a / 5
+
+# Sisa Bagi
+a %= 3  # ini sama halnya dengan  a = a % 3
+
+# Pemangkatan
+a **= 4  # ini sama halnya dengan  a = a ** 4
+</code></pre>
+
+<hr>
+
+      <h2>3. Operator Pembanding</h2>
+      <p>Operator ini digunakan untuk membandingkan dua buah nilai. </p>
+
+<pre><code>
+_______________________________
+Operator                Simbol
+-------------------------------
+Lebih Besar                >
+Lebih Kecil                <
+Sama Dengan                ==
+Tidak Sama dengan          !=
+Lebih Besar Sama dengan    >=
+Lebih Kecil Sama dengan    <=
+_______________________________
+</code></pre>
+
+Contoh:
+<pre><code>
+>>> a = 8
+>>> b = 3
+>>> a > b
+True
+>>> a < b
+False
+>>> a == b
+False
+>>> a != b
+True
+>>> a >= b
+True
+>>> a <= b
+False
+>>>
+</code></pre>
+
+<hr>
+
+      <h2>4. Operator Logika</h2>
+
+<pre><code>
+____________________________________
+Nama          Simbol pada Python
+------------------------------------
+Logika AND           and
+Logika OR            or
+Negasi/kebalikan     not
+____________________________________
+</code></pre>
+
+Contoh:
+
+<pre><code>
+>>> a = True
+>>> b = False
+>>> a and b
+False
+>>> a or b
+True
+>>> not a
+False
+>>>
+</code></pre>
+
+
+
+      <h2>5. Operator Ternary</h2>
+      <p>Operator ternary sebenarnya tidak ada dalam Python, tapi python punya cara lain untuk menggantikan operator ini.</p>
+      <p>Pada bahas pemrograman lain, operator tenary biasanya menggunakan syntax seperti berikut</p>
+<pre> condition ? if true : if false</pre>
+<pre><code>status = (arrived < 9) ? "Good" : "Bad"</code></pre>
+
+<p>Didalam python syntax nya yaitu</p>
+<pre>&lt;Nilai True&gt; if Kondisi else &lt;Nilai False&gt;</pre>
+
+<pre><code>
+status = "Good" if arrived < 9 else "Bad"
+</code></pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Control Flow" duration="2">
+        <h2>1. If Else Statements</h2>
+<pre><code>
+if kondisi:
+  print "kondisi 1"
+elif:
+  print "kondisi 2"
+else:
+  print "yeah like it!"
+</code></pre>
+
+<hr>
+
+        <h2>2. Looping</h2>
+        <p>Looping pada python mempunyai 2 cara, yaitu dengan <code>for</code> dan <code>while</code></p>
+
+
+<b>Looping dengan <code>for</code></b>
+<pre><code>
+a = [0,1,2,3,4]
+for data in a:
+  print data
+
+for x in range(7):
+  print x
+
+for x in xrange(2,4):
+  print x
+</code></pre>
+
+<b>Looping dengan <code>while</code></b>
+<pre><code>
+while(True):
+  print "Looping....."
+
+
+loop = 'yes'
+while(loop == 'yes'):
+  print "Looping..."
+  loop = raw_input("Loop again?")
+
+
+while(True):
+  print "Looping..."
+  ask = raw_input("Loop again?")
+  if ask == 'no':
+    break
+</code></pre>
+
+
+        <h2>3. Try Except</h2>
+
+        <p>Didalam exception ada 4 syntax yang bisa digunakan, yaitu
+        <code>try</code>
+        <code>except</code>
+        <code>else</code> dan 
+        <code>finnaly</code>
+        </p>
+<pre><code>
+try:
+  execute condition
+except:
+  condition if raise exception
+
+try:
+  execute condition
+except Exception as e:
+  print(e) # print error exception message
+finnaly:
+  always excute after all
+
+
+def divide(x, y):
+     try:
+         result = x / y
+     except ZeroDivisionError:
+         print "division by zero!"
+     else:
+         print "result is", result
+     finally:
+         print "executing finally clause"
+
+divide(3,4)
+divide(3,0)
+</code></pre>
+
+
+
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Python List" duration="2">
+        <p>List adalah sebuah array jika kita ibaratkan dengan bahasa pemrograman sepeti PHP, JavaScript</p>
+        <p>di dalam list kita boleh mencapurkan banyak jenis data kedalam nya</p>
+
+<pre><code>
+# membuat list kosong
+list_kosong = []
+# atau bisa dengan
+list_kosong = list()
+
+# list dengan data 
+hobi = ['gaming', 'coding']
+
+# list dengan campuran jenis data
+rumah = ['meja', 2, True, 25.33]
+</code></pre>
+
+
+<h3>Mengambil data dari list</h3>
+<p>List seperti array, yaitu nilai index di mulai dari <code>0</code></p>
+
+<pre><code>
+>>> hobi = ['membaca', 'coding', 'sepak bola', 'voli']
+>>> hobi[0]
+'membaca'
+>>> hobi[3]
+'voli'
+>>> 
+</code></pre>
+
+
+<h3>Update data list</h3>
+<p>List bersifat mutable, artinya isinya bisa kita ubah-ubah.</p>
+
+<pre><code>
+>>> hobi = ['membaca', 'coding', 'sepak bola', 'voli']
+>>> hobi[2]
+'sepak bola'
+>>> hobi[2] = 'bulu tangkis'
+>>> hobi
+['membaca', 'coding', 'bulu tangkis', 'voli']
+>>>
+</code></pre>
+
+
+<h4>Lainnya</h4>
+
+<pre><code>
+>>> hobi = ["membaca", "coding", "sepak bola", "voli"]
+>>> hobi.append('menulis')
+>>> hobi
+['membaca', 'coding', 'sepak bola', 'voli', 'menulis']
+>>> hobi.count('membaca')
+1
+>>> hobi.extend(['menyanyi', 'berlari'])
+>>> hobi
+['membaca', 'coding', 'sepak bola', 'voli', 'menulis', 'menyanyi', 'berlari']
+>>> hobi.index('voli')
+3
+>>> hobi.insert(2, 'menangis')
+>>> hobi
+['membaca', 'coding', 'menangis', 'sepak bola', 'voli', 'menulis', 'menyanyi', 'berlari']
+>>> hobi.pop()
+'berlari'
+>>> hobi
+['membaca', 'coding', 'menangis', 'sepak bola', 'voli', 'menulis', 'menyanyi']
+>>> hobi.remove('menyanyi')
+>>> hobi
+['membaca', 'coding', 'menangis', 'sepak bola', 'voli', 'menulis']
+>>> hobi.reverse()
+>>> hobi
+['menulis', 'voli', 'sepak bola', 'menangis', 'coding', 'membaca']
+>>> hobi.sort()
+>>> hobi
+['coding', 'membaca', 'menangis', 'menulis', 'sepak bola', 'voli']
+>>> del hobi[2]
+>>> hobi
+['coding', 'membaca', 'menulis', 'sepak bola', 'voli']
+>>> hobi[1:3]
+['membaca', 'menulis']
+>>> hobi
+['coding', 'membaca', 'menulis', 'sepak bola', 'voli']
+>>> hobi_dia = ['stalking', 'berpuisi']
+>>> hobi_kita = hobi + hobi_dia
+>>> hobi_kita
+['coding', 'membaca', 'menulis', 'sepak bola', 'voli', 'stalking', 'berpuisi']
+>>>
+
+
+# List Multi dimensi
+data = [
+  [1,2,3,4],
+  [10,20,30],
+  ['dia', 'kita', 'mereka']
+]
+
+</code></pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Python Dict" duration="2">
+<p>Python Dictionary adalah data tipe yang menyediakan keys dan values</p>
+
+Initialize dict
+<pre><code>
+>>> a = {}
+>>> b = dict()
+>>> a == b
+True
+>>> 
+</code></pre>
+
+Contoh:
+<pre><code>
+>>> bio = {'name': 'Edi Santoso', 'age': 19}
+>>> bio
+{'age': 19, 'name': 'Edi Santoso'}
+>>> bio['age']
+19
+>>> bio['address'] = 'Jakarta'
+>>> bio
+{'age': 19, 'name': 'Edi Santoso', 'address': 'Jakarta'}
+>>> bio.keys()
+['age', 'name', 'address']
+>>> bio.values()
+[19, 'Edi Santoso', 'Jakarta']
+>>> bio.items()
+[('age', 19), ('name', 'Edi Santoso'), ('address', 'Jakarta')]
+>>> del bio['address']
+>>> bio
+{'age': 19, 'name': 'Edi Santoso'}
+>>> bio.get('age')
+19
+>>> bio.get('ages', None)
+>>>
+</code></pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Python Tuple" duration="2">
+<p>Tuple seperti List, tetapi bersifat imutable atau tidak bisa di ubah-ubah</p>
+
+<pre><code>
+>>> tup = tuple()
+>>> tup1 = ()
+>>> tup == tup1
+True
+>>> tup = (1,2,3)
+>>> tup1 = ('a','b','c')
+>>> tup2 = tup + tup1
+>>> tup2
+(1, 2, 3, 'a', 'b', 'c')
+
+>>> tup
+(1, 2, 3)
+>>> tup[2]
+3
+>>> del tup[2]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object doesn't support item deletion
+>>> 
+</code></pre>
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Function" duration="2">
+        <p>Function pada python di mulai dengan <code>def</code> kemudian di ikuti nama function</p>
+
+<pre><code>
+# create function
+def func_name():
+  prin "Hello World!"
+
+# run/call function
+funct_name()
+
+
+# function with parameter
+def call_name(name):
+  print "Hello %s, Good Morning" % name
+
+call_name('edi')
+
+
+# function with return
+def luas_persegi(sisi):
+  luas = sisi * sisi
+  return luas
+
+print "Luas Persegi: %d" % luas_persegi(3)
+</code></pre>
+
+<aside class="special">
+<strong>Note</strong>: pada python function bisa di panggil didalam function tersebut atau biasa di sebut dengan recursive function
+</aside>
+
+Contoh:
+<pre><code>
+# Factirial
+
+def factorial(n):
+  if n in (0,1):
+    return 1
+  return factorial(n - 1) * n
+
+print factorial(5)
+</code></pre>
+
+<h3>Anonymous Function</h3>
+<p>Python mempunyai anonymous function yaitu menggunakan <code>lambda</code></p>
+
+Contoh:
+<pre><code>
+def sum_data(a,b):
+  return a + b
+
+sum_data_anon = lambda a, b: a + b
+
+print sum_data(5,5)
+print sum_data_anon(5,5)
+</code></pre>
+        </google-codelab-step>
+
+        <google-codelab-step label="args dan kwargs" duration="2">
+<p><code>*args</code> dan <code>**kwargs</code> pada dasarnya adalah sebuah variabel. Tetapi terkadang juga disebut dengan <i>magic variable</i>,  karena kemampuannya yang aneh.</p>
+<p>
+Tetapi <code>*args</code> dan <code>**kwargs</code> digunakan sebagai parameter pada function.
+</p>
+
+Contoh:
+<pre><code>
+def call_name(*name):
+  print "List name"
+  for n in name:
+    print n
+
+call_name('john', 'doe')
+</code></pre>
+
+
+<aside class="special">
+<strong>Note</strong>: <code>*args</code> dan <code>**kwargs</code> adalah bukan nama yang baku. kita bisa menggunakan nama lain seperti <code>*name</code>, <code>**name</code>, <code>*bio</code>, etc
+</aside>
+
+<h3>Perbedaan dari <code>*args</code> dan <code>**kwargs</code></h3>
+<p>Perbedaan yang mudah di lihat adalah <code>*args</code> menggunakan satu tanda bintang, sedangkan <code>**kwargs</code> menggunakan dua tanda bintang.</p>
+<ul>
+  <li><code>*</code> bintang satu artinya akan membuat sebuah parameter dengan tipe <code>tuple</code></li>
+  <li><code>**</code> bintang dua artinya akan membuat sebuah parameter dengan tipe <code>dictionary</code></li>
+</ul>
+
+<pre><code>
+# buat *args
+def call_name(*name):
+  print name
+
+# buat **kwargs
+def biodata(**bio):
+  print bio
+
+# call function
+call_name('john', 'doe')
+biodata(name='edi', address='jakarta')
+
+# output
+('john', 'doe')
+{'name': 'edi', 'address': 'jakarta'}
+
+</code></pre>
+        </google-codelab-step>
+
+        <google-codelab-step label="Python Class" duration="2">
+
+<h3>Konsep Class Pada Python</h3>
+<pre><code>
+class ClassName:
+
+  # init instance or constructor
+  def __init__(self, key):
+    self.key = key
+
+  # private method
+  def __private_method(self, private):
+    pass
+
+  # public method
+  def public_method(self):
+    pass
+
+call = ClassName('key')
+print call.public_method()
+print call.__private_method() # will error
+</code></pre>
+
+Contoh:
+<pre><code>
+class PersegiPanjang:
+  ''' Class Persegi Panjang
+
+  Ini docstring
+  '''
+  
+  def __init__(self, panjang, lebar):
+    self.panjang = panjang
+    self.lebar = lebar
+
+  def hitung_luas(self):
+    return self.panjang * self.lebar
+
+  def hitung_keliling(self):
+    return (2*self.panjang) + (2*self.lebar)
+
+
+psg = PersegiPanjang(30, 6)
+print psg.hitung_luas()
+print psg.hitung_keliling()
+</code></pre>
+
+
+<h3>Python Inheritance</h3>
+<pre><code>
+class Mencetak:
+  
+  def set_kata(self, kata):
+    self.kata = kata
+
+  def cetak(self):
+    print "Kata yang ingin anda cetak :", self.kata
+
+
+class Printer(Mencetak):
+
+  def tambah_kata(self, kata):
+    self.kata = self.kata + kata
+
+
+c = Mencetak()
+c.set_kata('hay')
+c.cetak()
+
+p = Printer()
+p.set_kata("Buku Python")
+p.tambah_kata(" Bisa beli di amazon.com")
+p.cetak()
+</code></pre>
+
+another example:
+<pre><code>
+class Parent(object):
+
+  def override(self):
+    print "PARENT override()"
+
+  def implicit(self):
+    print "PARENT implicit()"
+
+  def altered(self):
+    print "PARENT altered()"
+
+
+class Child(Parent):
+
+  def override(self):
+    print "CHILD override()"
+
+  def altered(self):
+    print "CHILD, BEFORE PARENT altered()"
+    super(Child, self).altered()
+    print "CHILD, AFTER PARENT altered()"
+
+
+dad = Parent()
+son = Child()
+
+dad.implicit()
+son.implicit()
+
+dad.override()
+son.override()
+
+dad.altered()
+son.altered()
+</code></pre>
+
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Tips Tips" duration="2">
+        <h2>1. Debugging</h2>
+        <p>Ketika kita mengembangkan sebuah aplikasi, kita tidak terlepas yang namanya debuging.</p>
+        <p>Jika di dalam <code>JavaScript</code> kita bisa debuging lewat inspect element maupun menggunakan <code>console.log()</code>, didalam python kita bisa menggunakan <code>print</code> ataupun <code>pdb</code>.</p>
+
+        Contoh penggunaan <code>pdb</code>
+<pre><code>
+def name_aa():
+  print "aaa"
+  import pdb;pdb.set_trace()
+
+name_aa()
+</code></pre>
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Testing (basic)" duration="2">
+        <p>Testing pada python memeliki beberapa library, pada contoh ini hanya menggunakan <code>unittest</code> test bawaan python.</p>
+
+<b>test_example.py</b>
+<pre><code>
+import unittest
+
+class TestStringMethods(unittest.TestCase):
+
+    def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+    def test_isupper(self):
+        self.assertTrue('FOO'.isupper())
+        self.assertFalse('Foo'.isupper())
+
+    def test_split(self):
+        s = 'hello world'
+        self.assertEqual(s.split(), ['hello', 'world'])
+        # check that s.split fails when the separator is not a string
+        with self.assertRaises(TypeError):
+            s.split(2)
+
+if __name__ == '__main__':
+    unittest.main()
+</code></pre>
+
+<pre>$ python test_example.py</pre>
+Untuk detail tentang testing bisa dilihat <a href="http://docs.python-guide.org/en/latest/writing/tests/" target="_blank">disini</a>
+        </google-codelab-step>
+
+        <google-codelab-step label="Codelab Selesai!" duration="0">
+            <p>Selamat anda telah selesai mengikuti codelab python basic ini.</p>
+            <h3 class="checklist">Ringkasan</h3>
+            <ul class="checklist">
+                <li>Syntax dasar pada python</li>
+                <li>Variabel dan Tipe Data</li>
+                <li>Python Operator</li>
+                <li>List, Dict, Tuple</li>
+                <li>Function</li>
+                <li>Class</li>
+                <li>Debuging</li>
+            </ul>
+            <h3>Referensi</h3>
+            <ul>
+                <li><a href="https://www.python.org/" target="_blank">https://www.python.org</a></li>
+                <li><a href="https://www.petanikode.com/python-linux/" target="_blank">https://www.petanikode.com</a></li>
+                <li><a href="https://www.google.co.id" target="_blank">https://www.google.co.id</a></li>
+            </ul>
+
+        </google-codelab-step>
+
+    </google-codelab>
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-69004355-4', 'auto');
+
+        (function() {
+            var gaCodelab = '';
+            if (gaCodelab) {
+                ga('create', gaCodelab, 'auto', {
+                    name: 'codelab'
+                });
+            }
+
+            var gaView;
+            var parts = location.search.substring(1).split('&');
+            for (var i = 0; i < parts.length; i++) {
+                var param = parts[i].split('=');
+                if (param[0] === 'viewga') {
+                    gaView = param[1];
+                    break;
+                }
+            }
+            if (gaView && gaView !== gaCodelab) {
+                ga('create', gaView, 'auto', {
+                    name: 'view'
+                });
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
