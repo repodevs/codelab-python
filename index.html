@@ -729,6 +729,7 @@ a = [0,1,2,3,4]
 for data in a:
   print data
 
+# range(start,end,step) -> list
 for x in range(7):
   print x
 
@@ -1069,6 +1070,117 @@ biodata(name='edi', address='jakarta')
 </code></pre>
         </google-codelab-step>
 
+
+        <google-codelab-step label="Python File Management" duration="2">
+        <p>File Mangement pada python ini adalah salah satu dasar python yang harus di pahami, karena kita didalam pengembangan kita terkadang akan sering menemui hal ini.</p>
+
+
+<aside class="special">
+<p>Terdapat beberapa jenis mode dalam pengelohan file, berikut daftar mode tersebut</p>
+<ul>
+    <li><code>r</code>: <i>read</i> atau hanya baca saja</li>
+    <li><code>w</code>: <i>write</i> atau untuk menulis file, jika data file sudah ada akan di replace</li>
+    <li><code>a</code>: <i>append</i> atau untuk menambahkan data ke file, jika data sudah ada akan di tambahkan</li>
+    <li><code>r+</code>: <i>read +</i> atau digunakan untuk membaca sekaligus untuk menulis data ke dalam file</li>
+    <li><code>b</code>: <i>binary</i> atau sering digunakan untuk binary file terutama pada windows</li>
+</ul>
+</aside>
+
+
+<b>Membaca File</b>
+<pre><code>
+# open file
+open_file = open("file.txt", "r")
+
+# read each line of file -> return list
+print open_file.readlines()
+
+# read all of file -> return string
+# print open_file.read()
+
+# looping data
+for data in open_file:
+    print data
+
+# close file
+open_file.close()
+
+
+## opening with `with` loop
+with open("file.txt", "r") as datas:
+    print datas
+    ....
+</code></pre>
+
+
+<b>Menulis File</b>
+<pre><code>
+# data to wirte
+text = "Name: Edo\nAddress: Jakarta"
+# open file with write mode
+bio = open("bio.txt", "w")
+# write data
+bio.write(text)
+# close file
+bio.close()
+</code></pre>
+
+
+        </google-codelab-step>
+
+
+        <google-codelab-step label="Python Json" duration="2">
+<p>Managament Json dengan python</p>
+
+<b>Mengelola json dari sebuah file</b>
+<pre><code>
+# buat file `data.json`
+{
+    "name": "Edo",
+    "status": "member",
+    "images": {
+        "image_small": "https://url-example.com/image_small.jpg",
+        "image_medium": "https://url-example.com/image_medium.jpg",
+        "image_large": "https://url-example.com/image_large.jpg",
+    }
+}
+
+## read it!
+# python `json` lib
+import json
+
+file_json = open("data.json", "r").read()
+data = json.loads(file_json)
+
+print data
+
+print data['name']
+print data['images']['image_medium']
+
+</code></pre>
+
+
+<b>Mengelola data dari URL Web</b>
+<pre><code>
+import urllib
+import json
+
+URL = "https://hacker-news.firebaseio.com/v0/item/16081120.json?print=pretty"
+
+# open it
+response = urllib.open(URL)
+
+# parsing data
+data = json.loads(response.read())
+
+print data['id'], data['by'], data['url']
+
+</code></pre>
+
+
+        </google-codelab-step>
+
+
         <google-codelab-step label="Python Class" duration="2">
 
 <h3>Konsep Class Pada Python</h3>
@@ -1185,21 +1297,6 @@ son.altered()
         </google-codelab-step>
 
 
-        <google-codelab-step label="Tips Tips" duration="2">
-        <h2>1. Debugging</h2>
-        <p>Ketika kita mengembangkan sebuah aplikasi, kita tidak terlepas yang namanya debuging.</p>
-        <p>Jika di dalam <code>JavaScript</code> kita bisa debuging lewat inspect element maupun menggunakan <code>console.log()</code>, didalam python kita bisa menggunakan <code>print</code> ataupun <code>pdb</code>.</p>
-
-        Contoh penggunaan <code>pdb</code>
-<pre><code>
-def name_aa():
-  print "aaa"
-  import pdb;pdb.set_trace()
-
-name_aa()
-</code></pre>
-        </google-codelab-step>
-
 
         <google-codelab-step label="Testing (basic)" duration="2">
         <p>Testing pada python memeliki beberapa library, pada contoh ini hanya menggunakan <code>unittest</code> test bawaan python.</p>
@@ -1231,6 +1328,70 @@ if __name__ == '__main__':
 <pre>$ python test_example.py</pre>
 Untuk detail tentang testing bisa dilihat <a href="http://docs.python-guide.org/en/latest/writing/tests/" target="_blank">disini</a>
         </google-codelab-step>
+
+
+        <google-codelab-step label="Python Web Frameworks" duration="2">
+        <p>Python digunakan juga untuk membangun sebuah web aplication, berikut list beberapa framework yang sering digunakan</p>
+
+
+<ol type="1" start="1">
+    <li><code><a href="https://www.djangoproject.com/" target="_blank">Django</a></code> <i> a high-level Python Web Framework which follows MVT (model-view-template) architectural</i></li>
+    <li><code><a href="http://flask.pocoo.org/" target="_blank">Flask</a></code> <i>a microframework for Python based on Werkzeug, Jinja 2 and good intentions.</i></li>
+    <li><code><a href="https://github.com/channelcat/sanic" target="_blank">Sanic</a> <i> is Flask-like Python 3.5+ web server that’s written to go fast.</i></code></li>
+    <li>dan <code><a href="https://github.com/vinta/awesome-python#web-frameworks" target="_blank">masih banyak lagi</a></code></li>
+</ol>
+
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Tips Tips" duration="2">
+        <h2>1. Debugging</h2>
+        <p>Ketika kita mengembangkan sebuah aplikasi, kita tidak terlepas yang namanya debuging.</p>
+        <p>Jika di dalam <code>JavaScript</code> kita bisa debuging lewat inspect element maupun menggunakan <code>console.log()</code>, didalam python kita bisa menggunakan <code>print</code> ataupun <code>pdb</code>.</p>
+
+        Contoh penggunaan <code>pdb</code>
+<pre><code>
+def name_aa():
+  print "aaa"
+  import pdb;pdb.set_trace()
+
+name_aa()
+</code></pre>
+
+<hr>
+        <h2>2. Virtualenv</h2>
+
+<aside class="special">
+<code>virtualenv</code> is a tool to create isolated Python environments.
+</aside>
+
+<p>Jadi mudahnya <code>virtualenv</code> ini digunakan untuk membuat environment python yang terisolasi yang berfungsi untuk memisahkan module-module / package dari python.</p>
+
+<b>Instalation</b>
+<pre>sudo pip install virtualenv</pre>
+
+Contoh penggunaan:
+<pre>
+# create folder
+$ mkdir my-app
+$ cd my-app
+
+# create environment
+$ virtualenv env
+
+# activate environment
+$ source env/bin/activate
+
+# install a package
+(env)$ pip install flask
+
+# deactivate environment
+$ deactivate
+</pre>
+
+
+        </google-codelab-step>
+
 
         <google-codelab-step label="Codelab Selesai!" duration="0">
             <p>Selamat anda telah selesai mengikuti codelab python basic ini.</p>
